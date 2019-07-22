@@ -1,0 +1,99 @@
+// main: base.scss
+
+#homepage {
+    background: $neutral-dark;
+}
+
+h1#logo {
+    height: 15vh;
+    padding: 2vh;
+    background-image: url(../assets/img/logo.png);
+    background-size: contain;
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    color: $neutral-light;
+    font-size: 2.5rem;
+    line-height: 11vh;
+    text-indent: 15vh;
+}
+
+#homepage-header {
+    display: flex;
+    flex-direction: row;
+    height: 80vh;
+    overflow: hidden;
+
+    .homepage-tab {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 4;
+        font-size: 2rem;
+        text-decoration: none;
+        transition: flex $med-transition;
+
+        &:hover {
+            flex: 5;
+        }
+
+        &#parents-tab {
+            background: $neutral-light;
+            color: $neutral-dark;
+        }
+
+        &#admin-tab {
+            background-color: $neutral-dark;
+            color: $main-color;
+
+            .tab-icon {
+                transform: rotate(4deg);
+                transition: transform $med-transition;
+            }
+            &:hover .tab-icon {
+                transform: rotate(0deg);
+                transition: transform $med-transition $med-transition;
+            }
+        }
+
+        .tab-icon {
+            width: 18vw;
+        }
+    } // end .homepage-tab
+
+    .divider {
+        position: relative;
+        flex: 0;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -25vh;
+            bottom: -25vh;
+            z-index: 100;
+            width: 8vw;
+            transform: translateX(-50%) rotate(4deg);
+        }
+
+        &.start:after {
+            border-right: 2px dashed $main-color;
+        }
+
+        &.middle:after {
+            background: $main-color;
+            transition: width $med-transition;
+        }
+
+        &.end:after {
+            border-left: 2px dashed $neutral-light;
+        }
+    } // end .divider
+    &:hover .divider.middle:after {
+        width: 4vw; // Shrink middle divider when hovered over either tab
+    }
+
+} // end #homepage-header
