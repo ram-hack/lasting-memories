@@ -1,0 +1,17 @@
+When starting to work on the project for the session (make sure on master branch using git checkout master)-- git pull origin master
+This is to make sure your local version matches repository in case someone made changes in the meantime.
+
+Then when you are adding new code, use checkout to switch branches so we don't add code to master that isn't
+approved. -- git checkout -b name-of-branch (-b means make new branch)
+
+Next is easy, just add and commit -- git add . or git add -A (https://gist.github.com/dsernst/ee240ae8cac2c98e7d5d visit this site for
+a good explanation of the difference between . and -A)
+--git commit -m "message description"
+
+when done working on code for the session, push the non-master branch you worked on to the origin
+-- git push origin name-of-branch
+
+Go to the github repo for the project and click compare and pull request on the right. Then click green pull request button.
+Make sure the next page says no conflicts with master branch, then merge pull request and confirm merge.
+
+Finally delete your local branch -- git branch -d branch-name
