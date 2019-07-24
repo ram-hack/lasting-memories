@@ -17,23 +17,37 @@
     <h1 id="logo">Lasting Memories School Photography</h1>
     <header id="homepage-header">
         <div class="divider start"></div>
-        <a id="parents-tab" class="homepage-tab" href="parents.html">
+        <div id="parents-tab" class="homepage-tab">
             <div class="tab-icon">
                 <img src="assets/img/father.png" alt="">
             </div>
             <h2 class="tab-name">Parents</h2>
-        </a>
+            <div class="tab-buttons">
+                <a class="tab-button default-link" href="https://vando.imagequix.com/Q98MA9Q"><span class="tab-button-text">Order Photos</span></a>
+                <a class="tab-button" href="parents.html"><span class="tab-button-text">Tips &amp; Tricks</span></a>
+            </div>
+        </div>
         <div class="divider middle"></div>
-        <a id="admin-tab" class="homepage-tab" href="admin.html">
+        <div id="admin-tab" class="homepage-tab">
             <div class="tab-icon">
                 <img src="assets/img/clipboard.png" alt="">
             </div>
             <h2 class="tab-name">School Administrators</h2>
-        </a>
+            <div class="tab-buttons">
+                <a class="tab-button default-link" href="admin.html"><span class="tab-button-text">Bring us to Your School</span></a>
+            </div>
+        </div>
         <div class="divider end"></div>
     </header>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="scripts/unhover.js" type="module"></script>
+    <script type="module">
+        import Unhover from '/scripts/unhover.js';
+
+        let unhover = new Unhover('.tab-buttons', 'not-selected');
+    </script>
+    <script src="scripts/homepage.js"></script>
 </body>
 
 </html>

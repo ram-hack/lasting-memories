@@ -31,8 +31,7 @@ h1#logo {
         align-items: center;
         justify-content: center;
         flex: 4;
-        font-size: 2rem;
-        text-decoration: none;
+        cursor: pointer;
         transition: flex $med-transition;
 
         &:hover {
@@ -42,6 +41,15 @@ h1#logo {
         &#parents-tab {
             background: $neutral-light;
             color: $neutral-dark;
+
+            &:hover .tab-button.default-link, .tab-button:hover {
+                background-color: $neutral-dark;
+                color: $neutral-light;
+            }
+            &:hover .tab-button.default-link.not-selected {
+                background-color: $main-color;
+                color: $neutral-dark;
+            }
         }
 
         &#admin-tab {
@@ -56,10 +64,35 @@ h1#logo {
                 transform: rotate(0deg);
                 transition: transform $med-transition $med-transition;
             }
+
+            &:hover .tab-button.default-link, .tab-button:hover {
+                background-color: $neutral-light;
+            }
         }
 
         .tab-icon {
             width: 18vw;
+        }
+
+        .tab-name {
+            font-size: 2.5rem;
+        }
+
+        .tab-button {
+            display: inline-block;
+            margin: 4rem 1rem 0;
+            padding: 1rem;
+            background-color: $main-color;
+            color: $neutral-dark;
+            font-size: 2rem;
+            text-decoration: none;
+            transform: skewX(-4deg);
+            transition: background-color $med-transition, color $med-transition;
+
+            .tab-button-text {
+                display: block;
+                transform: skewX(4deg);
+            }
         }
     } // end .homepage-tab
 
