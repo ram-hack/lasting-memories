@@ -16,6 +16,8 @@ $slow-transition: 800ms;
 
 @import 'homepage';
 @import 'parent';
+@import 'gallery';
+
 // --------------------------------------------------
 // Global Styles
 // --------------------------------------------------
@@ -27,7 +29,11 @@ $slow-transition: 800ms;
 }
 
 body {
-    font-family: Teko, Arial, sans-serif;
+    font-family: Hind, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Teko, Impact, sans-serif;
 }
 
 ul, ol {
@@ -37,4 +43,5 @@ ul, ol {
 img {
     display: block;
     max-width: 100%;
+    max-height: 100%;
 }
