@@ -1,62 +1,47 @@
 // main: base.scss
 
-#navbar {
-  background-color: $neutral-dark;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
-  #logo{
-    height: 10vh;
-    padding: 2vh;
-    background-image: url(../assets/img/logo.png);
-    background-size: contain;
-    background-position: center left;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    color: $neutral-light;
-    font-size: 2.5rem;
-    line-height: 6vh;
-    text-indent: 8vh;
+#parent-tips-title{
+  font-size: 4em;
+  margin: 20vh 20vh 10vh 20vh ;
+
+  &:after{
+    content: '';
+    display: block;
+    width: 50%;
+    height: 5px;
+    background-color: $main-color;
+    position: relative;
+    right: 0%;
   }
+}
 
-  #nav-buttons{
+
+.tipsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 20vh;
+
+  .tipsItem{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0;
 
-    height: 100%;
-    margin-right: 50px;
+    img{
+      width: 20%;
+    }
 
-      a{
-        padding: 4vh 20px;
-        color:$neutral-light;
-        font-size: 1.3em;
-        position: relative;
-        &:after{
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: 0px;
-          height: 5px;
-          width: 100%;
-          transform: scaleX(0);
+    h2{
+      font-size: 3em;
 
-          background-color: $main-color;
-          transition: transform .1s linear;
-        }
 
-        &:hover{
-          color: $main-color;
-          &:after{
+    }
 
-            transform: scaleX(.8);
-          }
-
-        }
-
-      }
-
+    p{
+      font-size: 1.3em;
+    }
   }
-
-
 }

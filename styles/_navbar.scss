@@ -1,0 +1,66 @@
+// main: base.scss
+#navbar {
+  background-color: $neutral-dark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  z-index: 10;
+
+  #logo{
+    height: 10vh;
+    padding: 2vh;
+    background-image: url(../assets/img/logo.png);
+    background-size: contain;
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    color: $neutral-light;
+    font-size: 2.5rem;
+    line-height: 6vh;
+    text-indent: 8vh;
+  }
+
+  #nav-buttons{
+    display: flex;
+    justify-content: space-between;
+
+    height: 100%;
+    margin-right: 50px;
+
+      a{
+        padding: 4vh 20px;
+        color:$neutral-light;
+        font-size: 1.3em;
+        position: relative;
+        &:after{
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0px;
+          height: 5px;
+          width: 100%;
+          transform: scaleX(0);
+
+          background-color: $main-color;
+          transition: transform .1s linear;
+        }
+
+        &:hover{
+          color: $main-color;
+          &:after{
+
+            transform: scaleX(.8);
+          }
+
+        }
+
+      }
+
+  }
+
+
+}

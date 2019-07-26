@@ -17,6 +17,8 @@ $slow-transition: 800ms;
 @import 'homepage';
 @import 'parent';
 @import 'gallery';
+@import 'navbar';
+@import 'footer';
 
 // --------------------------------------------------
 // Global Styles
@@ -30,6 +32,7 @@ $slow-transition: 800ms;
 
 body {
     font-family: Hind, Arial, sans-serif;
+    color: $neutral-dark;
 }
 
 h1, h2, h3, h4, h5, h6 {
