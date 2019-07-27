@@ -9,9 +9,12 @@
   left:0;
   right: 0;
   z-index: 10;
+  height: 10vh;
+  transition: height .3s ease;
 
   #logo{
-    height: 10vh;
+
+    height: 100%;
     padding: 2vh;
     background-image: url(../assets/img/logo.png);
     background-size: contain;
@@ -22,44 +25,52 @@
     font-size: 2.5rem;
     line-height: 6vh;
     text-indent: 8vh;
+    cursor: pointer;
+    transition: padding .3s ease, height .3s ease;
   }
 
   #nav-buttons{
     display: flex;
     justify-content: space-between;
-
     height: 100%;
-    margin-right: 50px;
-
-      a{
-        padding: 4vh 20px;
-        color:$neutral-light;
-        font-size: 1.3em;
-        position: relative;
-        &:after{
-          content: '';
-          display: block;
-          position: absolute;
-          bottom: 0px;
-          height: 5px;
-          width: 100%;
-          transform: scaleX(0);
-
-          background-color: $main-color;
-          transition: transform .1s linear;
-        }
-
-        &:hover{
-          color: $main-color;
+    margin-right: 150px;
+      li{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        a{
+          display: flex;
+          align-items: center;
+          height: 100%;
+          padding: 0vh 20px;
+          color:$neutral-light;
+          font-size: 1.3em;
+          position: relative;
           &:after{
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            transform: scaleX(0);
 
-            transform: scaleX(.8);
+            background-color: $main-color;
+            transition: transform .1s linear;
+          }
+
+          &:hover{
+            color: $main-color;
+            &:after{
+
+              transform: scaleX(.8);
+            }
+
           }
 
         }
-
-      }
-
+    }
   }
 
 
