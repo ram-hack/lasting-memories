@@ -20,7 +20,64 @@ export default class Gallery {
         this.$preview = $(previewSelector);
         this.$previewImg = this.$preview.find('img');
 
+        this.thumbIdx = this.highResIdx = 0;
+        this.loadNextThumbnail();
+
         this.registerEventListeners();
+    }
+
+    loadNextThumbnail() {
+        if(this.thumbIdx < this.$thumbnails.length) {
+            let $currentThumbnail = this.$thumbnails.eq(this.thumbIdx);
+
+            let $img = $('<img alt="">');
+            $img.prop('src', $currentThumbnail.data('thumbnail-src'));
+
+            $currentThumbnail.append($img);
+
+            this.thumbIdx++;
+            $img.on('load', (e) => {
+                $(e.currentTarget).parent().addClass('loaded');
+                this.loadNextThumbnail();
+            });
+        }
+        else {
+            this.loadNextHighRes();
+        }
+    }
+
+    loadNextHighRes() {
+        let previouslyLoaded = this.$preview.find('#galleryImg' + this.highResIdx).length > 0;
+        while(previouslyLoaded && this.highResIdx < this.$thumbnails.length) {
+            this.highResIdx++;
+            previouslyLoaded = this.$preview.find('#galleryImg' + this.highResIdx).length > 0;
+        }
+
+        if(this.highResIdx < this.$thumbnails.length) {
+            let $img = this.loadHighRes(this.highResIdx);
+
+            this.highResIdx++;
+            $img.on('load', (e) => {
+                setTimeout(
+                () => this.loadNextHighRes(), 1000);
+            });
+        }
+    }
+
+    loadHighRes(idx) {
+        let $currentThumbnail = this.$thumbnails.eq(idx);
+
+        let $img = $('<img alt="">');
+        $img.prop('id', 'galleryImg' + idx);
+        $img.prop('src', $currentThumbnail.data('thumbnail-src'));
+
+        this.$preview.append($img);
+
+        $img.on('load', (e) => {
+            $(e.currentTarget).addClass('loaded');
+        });
+
+        return $img;
     }
 
     registerEventListeners() {
@@ -54,8 +111,6 @@ export default class Gallery {
                     .removeClass('scroll-start scroll-end')
                     .addClass('scroll-progress');
             }
-
-            this.$preview.css('top', previewOffset + 'px');
         }
         else {
             if(this.$preview.hasClass('scroll-start')) {
@@ -65,13 +120,19 @@ export default class Gallery {
             this.$preview
                 .removeClass('scroll-progress scroll-start')
                 .addClass('scroll-start');
-            this.$preview.css('top', '');
         }
     }
 
     onMouseEnter(e) {
-        let $thumb = $(e.currentTarget);
-        this.$previewImg.attr('src', $thumb.data('full-res-src'));
+        let idx = $(e.currentTarget).index();
+        let $highRes = $('#galleryImg' + idx);
+
+        if($highRes.length === 0) {
+            $highRes = this.loadHighRes(idx);
+        }
+
+        this.$preview.children().removeClass('show');
+        $highRes.addClass('show');
     }
 
 }
