@@ -1,5 +1,38 @@
 // main: base.scss
 
-#parent-nav {
-  background-color: $neutral-dark;
+
+#parent-tips-title{
+  font-size: 4em;
+  margin: 20vh 20vh 10vh 20vh ;
+
+  &:after{
+    content: '';
+    display: block;
+    width: 50%;
+    height: 5px;
+    background-color: $main-color;
+    position: relative;
+    right: 0%;
+  }
+}
+
+
+.tipsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 20vh;
+
+  .tipsItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0;
+
+    img{
+      width: 20%;
+    }
+
+  }
 }
