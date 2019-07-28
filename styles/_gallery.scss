@@ -3,6 +3,7 @@
 .gallery {
     position: relative;
     min-height: 100vh;
+    padding-left: 2rem;
 }
 .gallery-thumbnails {
     display: flex;
@@ -10,11 +11,16 @@
     flex-wrap: wrap;
     justify-content: space-between;
     width: 40%;
-    flex: 4;
 
     .thumbnail {
         width: 30%;
         margin-bottom: 5%;
+        opacity: 0;
+        transition: opacity $med-transition;
+
+        &.loaded {
+            opacity: 1;
+        }
 
         &:nth-last-child(1), &:nth-last-child(2), &:nth-last-child(3) {
             margin-bottom: 0;
@@ -34,18 +40,60 @@
     background: #eee;
 
     img {
+        display: none;
         max-width: 90%;
         max-height: 90%;
-        transition: transform $med-transition;
+        opacity: 0;
+        transition: transform $med-transition, opacity $med-transition;
+
+        &.loaded.show {
+            display: block;
+            opacity: 1;
+        }
     }
 
     &.scroll-start img {
-        transform: translateY(-2.5vh);
+        transform: translateY(-5vh);
+    }
+    &.scroll-progress {
+        position: fixed;
     }
     &.scroll-progress img {
         transform: translateY(0);
     }
+    &.scroll-end {
+        top: auto;
+        bottom: 0;
+    }
     &.scroll-end img {
-        transform: translateY(2.5vh);
+        transform: translateY(5vh);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .gallery-thumbnails .thumbnail {
+        width: 47.5%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .gallery {
+        padding: 0 1rem;
+    }
+    .gallery-thumbnails {
+        width: 100%;
+
+        .thumbnail {
+            width: 30%;
+        }
+    }
+    .gallery-preview {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .gallery-thumbnails .thumbnail {
+        width: 47.5%;
     }
 }
