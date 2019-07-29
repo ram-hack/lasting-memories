@@ -9,17 +9,9 @@ $(document).ready(function() {
 
         $("#shutter-layer").toggleClass("grow");
         $("#X-layer").toggleClass("hidden");
-        // $(".navButton").each(function(i) {
-        //     $(this).toggleClass("navForward");
-        // });
+
 
         if (!queryStart) {
-            // $("#hamburger").toggleClass("backward");
-            // $(".navButton").each(function(i) {
-            //     $(this).toggleClass("navBackward");
-            // });
-            console.log("in if");
-            console.log(queryStart);
             $("#nav-buttons").toggleClass("closed");
         }
         queryStart = false;
@@ -38,16 +30,9 @@ $(document).ready(function() {
             //big screen
 
             $("#nav-buttons").removeClass("hamMenu closed");
-            // $("#hamburger").removeClass("forward");
-            // $("#hamburger").removeClass("backward");
-            //
-            // $(".navButton").each(function(i) {
-            //     $(this).removeClass("navForward");
-            // });
-            //
-            // $(".navButton").each(function(i) {
-            //     $(this).removeClass("navBackward");
-            // });
+            $("#X-layer").addClass("hidden");
+            $("#shutter-layer").removeClass("grow");
+
 
             queryStart = true;
 
