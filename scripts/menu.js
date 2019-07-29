@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     var queryStart = true; //Keeps animation from running for hamburger on page load or screen size change.
     $("#hamburger").click(function() {
-        $("#button-container").removeClass("closed");
+        $("#nav-buttons").removeClass("closed");
         $("#hamburger").toggleClass("forward");
 
         $(".navButton").each(function(i) {
@@ -24,12 +24,12 @@ $(document).ready(function() {
         //small screen
 
         if (mediaQuery.matches) {
-            $("#button-container").addClass("hamMenu closed");
+            $("#nav-buttons").addClass("hamMenu closed");
 
         } else {
             //big screen
 
-            $("#button-container").removeClass("hamMenu closed");
+            $("#nav-buttons").removeClass("hamMenu closed");
             $("#hamburger").removeClass("forward");
             $("#hamburger").removeClass("backward");
 

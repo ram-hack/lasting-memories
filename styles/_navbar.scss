@@ -29,6 +29,10 @@
     transition: padding .3s ease, height .3s ease;
   }
 
+  #hamburger{
+    display: none;
+  }
+
   #nav-buttons{
     display: flex;
     justify-content: space-between;
@@ -73,11 +77,5 @@
     }
   }
 
-
-}
-
-@import 'hamburger';
-
-@media(max-width: 800px){
 
 }
