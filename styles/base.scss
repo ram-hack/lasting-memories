@@ -28,6 +28,7 @@ $display-font: Teko, Impact, sans-serif;
 @import 'navbar';
 @import 'footer';
 
+
 // --------------------------------------------------
 // Global Styles
 // --------------------------------------------------
@@ -74,3 +75,5 @@ p {
     font-size: 1.25em;
     line-height: 1.75;
 }
+
+@import 'menu';
