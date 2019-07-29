@@ -10,6 +10,11 @@ $fast-transition: 200ms;
 $med-transition: 400ms;
 $slow-transition: 800ms;
 
+$page-margin: 20vh;
+
+$copy-font: Hind, Arial, sans-serif;
+$display-font: Teko, Impact, sans-serif;
+
 // --------------------------------------------------
 // Imports
 // --------------------------------------------------
@@ -31,12 +36,12 @@ $slow-transition: 800ms;
 }
 
 body {
-    font-family: Hind, Arial, sans-serif;
+    font-family: $copy-font;
     color: $neutral-dark;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Teko, Impact, sans-serif;
+    font-family: $display-font;
 }
 
 ul, ol {
@@ -59,10 +64,10 @@ h2.sectionTitle{
 
 
 .content{
-  margin: 20vh;
+  margin: $page-margin;
 }
 
-p{
+p {
     font-size: 1.25em;
     line-height: 1.75;
 }
