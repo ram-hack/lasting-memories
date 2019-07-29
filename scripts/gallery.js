@@ -10,11 +10,12 @@
 
 export default class Gallery {
 
-    constructor(gallerySelector, thumbnailSelector, previewSelector) {
-        $(document).ready(() => this.init(gallerySelector, thumbnailSelector, previewSelector));
+    constructor(navSelector, gallerySelector, thumbnailSelector, previewSelector) {
+        $(document).ready(() => this.init(navSelector, gallerySelector, thumbnailSelector, previewSelector));
     }
 
-    init(gallerySelector, thumbnailSelector, previewSelector) {
+    init(navSelector, gallerySelector, thumbnailSelector, previewSelector) {
+        this.$nav = $(navSelector);
         this.$gallery = $(gallerySelector);
         this.$thumbnails = $(thumbnailSelector);
         this.$preview = $(previewSelector);
@@ -81,13 +82,14 @@ export default class Gallery {
     }
 
     registerEventListeners() {
+        $(window).resize((e) => this.onScroll(e));
         $(window).scroll((e) => this.onScroll(e));
         this.$thumbnails.mouseenter((e) => this.onMouseEnter(e));
     }
 
     onScroll(e) {
         let galleryTop = this.$gallery.offset().top;
-        let scrollTop = $(window).scrollTop();
+        let scrollTop = this.$nav.offset().top + this.$nav.outerHeight();
 
         let galleryHeight = this.$gallery.outerHeight();
         let previewHeight = this.$preview.outerHeight();

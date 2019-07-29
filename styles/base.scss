@@ -10,7 +10,10 @@ $fast-transition: 200ms;
 $med-transition: 400ms;
 $slow-transition: 800ms;
 
-$page-margin: 20vh;
+$navbar-init-height: 10vh;
+$navbar-shrink-height: 6vh;
+$page-margin: 10vw;
+$content-width: 100vw - (2 * $page-margin);
 
 $copy-font: Hind, Arial, sans-serif;
 $display-font: Teko, Impact, sans-serif;
