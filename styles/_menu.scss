@@ -2,251 +2,108 @@
 
 $menuDuration: .6s;
 
-@media(max-width: 1200px){
+@media(max-width: 680px){
   #navbar{
-    flex-direction: column;
-    justify-content: space-around;
-    height: 14vh;
-    #nav-buttons{
-      margin-right: 0px;
+    #logo{
+      font-size: 1.8rem;
     }
-
   }
 }
 
-// @media(max-width: 950px){
-//
-//   #navbar{
-//     flex-direction: column;
-//     justify-content: space-around;
-//     height: 14vh;
-//
-//   }
-// }
-
-@media(max-width: 800px){
+@media(max-width: 1200px){
 
     #navbar {
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       height: 10vh;
       #logo{
         height: 100%;
-        font-size: 1.8rem;
       }
 
-      .hamMenu{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-end;
-        height: 100vh;
-        width: 120px;
-        position: fixed;
-        right: 0px;
-        top: 120px;
-
-
+      #nav-buttons{
+        // &.closed{
+        //   display: none;
+        //
+        // }
+        margin: 0;
         .navButton{
-          position: absolute;
-          width: 100%;
+          text-align: center;
+          a{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            text-align: center;
+            padding: 0;
+
+          }
+        }
+        &.hamMenu{
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          height: 260px;
+          width: 200px;
+          box-sizing: border-box;
+          position: fixed;
+          right: 0px;
+          top: 6vh;
+          transition: right .3s ease-in-out;
+          padding: 2vh 0px 1vh 0px;
           background-color: $neutral-dark;
+          z-index: -1;
+          border-radius: 2px;
 
-          &.navForward{
-            opacity: 0;
-
-          }
-          &.navForward:first-child{
-
-            animation: drop-menu1 $menuDuration;
-            animation-delay: .65s;
-            animation-fill-mode: forwards;
-
+          &.closed{
+            right: -220px;
           }
 
-          &.navForward:nth-child(2){
+          .navButton{
+            position: relative;
+            width: 100%;
+            background-color: $neutral-dark;
+            display: flex;
+            justify-content: center;
+            a{
+              display: flex;
+              align-items: center;
+              height: 100%;
+              padding: 0vh 20px;
+              color:$neutral-light;
+              font-size: 1.3em;
+              position: relative;
+              &:after{
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0px;
+                left: 0;
+                height: 5px;
+                width: 100%;
+                transform: scaleX(0);
 
-            animation: drop-menu2 $menuDuration;
-            animation-delay:.5s;
-            animation-fill-mode: forwards;
+                background-color: $main-color;
+                transition: transform .1s linear;
+              }
 
+              &:hover{
+                color: $main-color;
+                &:after{
+
+                  transform: scaleX(1);
+                }
+
+              }
+
+            }
           }
 
-          &.navForward:nth-child(3){
-            animation: drop-menu3 $menuDuration;
-            animation-delay: .35s;
-            animation-fill-mode: forwards;
-
-          }
-
-          &.navForward:last-child{
-            animation: drop-menu4 $menuDuration;
-            animation-delay:.2s;
-            animation-fill-mode: forwards;
-
-          }
-
-          &.navBackward{
-            opacity: 1;
-
-          }
-
-          &.navBackward:first-child{
-            transform:translateY(0px);
-            animation: reverse-drop-menu1 $menuDuration;
-            animation-delay: .0s;
-            animation-fill-mode: forwards;
-
-          }
-
-          &.navBackward:nth-child(2){
-            transform:translateY(42px);
-            animation: reverse-drop-menu2 $menuDuration;
-            animation-delay:.15s;
-            animation-fill-mode: forwards;
-
-          }
-
-          &.navBackward:nth-child(3){
-            transform:translateY(84px);
-            animation: reverse-drop-menu3 $menuDuration;
-            animation-delay: .30s;
-            animation-fill-mode: forwards;
-
-          }
-
-          &.navBackward:last-child{
-            transform:translateY(126px);
-            animation: reverse-drop-menu4 $menuDuration;
-            animation-delay:.45s;
-            animation-fill-mode: forwards;
-
-          }
-
-        }
-
-
-        &.closed{
-          display: none;
-        }
-      }
-
-      @keyframes drop-menu1{
-        0%{
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-        }
-
-
-        100%{
-          transform: translateY(0px) rotate(0deg);
-          opacity: 1;
-
-        }
-      }
-
-      @keyframes drop-menu2{
-        0%{
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-        }
-
-
-        100%{
-          transform: translateY(42px) rotate(0deg);
-          opacity: 1;
-
-        }
-      }
-
-      @keyframes drop-menu3{
-        0%{
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-        }
-
-
-        100%{
-          transform: translateY(84px) rotate(0deg);
-          opacity: 1;
-
-        }
-      }
-
-      @keyframes drop-menu4{
-        0%{
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-        }
-
-
-        100%{
-          transform: translateY(126px) rotate(0deg);
-          opacity: 1;
 
         }
       }
 
 
-      @keyframes reverse-drop-menu1{
-        0%{
 
-          transform: translateY(0px) rotate(0deg);
-          opacity: 1;
-        }
-
-
-        100%{
-
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-        }
-      }
-
-      @keyframes reverse-drop-menu2{
-        0%{
-
-          transform: translateY(42px) rotate(0deg);
-          opacity: 1;
-        }
-
-
-        100%{
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-
-
-        }
-      }
-
-      @keyframes reverse-drop-menu3{
-        0%{
-
-          transform: translateY(84px) rotate(0deg);
-          opacity: 1;
-        }
-
-
-        100%{
-
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-        }
-      }
-
-      @keyframes reverse-drop-menu4{
-        0%{
-          transform: translateY(126px) rotate(0deg);
-          opacity: 1;
-        }
-
-
-        100%{
-          transform: translateY(-30px) rotate(-30deg);
-          opacity: 0;
-
-        }
-      }
 
     @import 'hamburger';
 

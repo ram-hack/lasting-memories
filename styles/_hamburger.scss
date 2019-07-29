@@ -1,17 +1,11 @@
 // main: base.scss
 
 $duration: .6s;
-$delaySecondRow: .1s;
-$durationSecondRow: .5s;
-$delayThirdRow: .2s;
-$reverseDelayThirdRow:.4s;
-$durationThirdRow: .4s;
+$shutterDuration: .2s;
+
 $hamburger-width: 40px;
-$hamburger-height: 32px;
-$breaker-width: 8px;
-$breaker-height: 32px;
-$bun-height: 8px;
-$fall-height: 40px;
+$hamburger-height: 40px;
+
 
 #hamburger {
     width: $hamburger-width;
@@ -25,272 +19,36 @@ $fall-height: 40px;
     right: 50px;
     transform: translate(0px, -50%);
     z-index: 100;
-}
-#hamburger .row {
-    height: $bun-height;
-    position: relative;
-    overflow: visible;
-}
-#hamburger .bun-half {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background: white;
-}
-.bun-half:first-child {
-    border-radius: 5px 0 0 5px;
-    left: 0;
-    right: 50%;
-}
-.bun-half:last-child {
-    border-radius: 0 5px 5px 0;
-    left: 50%;
-    right: 0;
+
+    #shutter-layer{
+      background-image: url('../assets/img/svg-shutter-icon-2.svg');
+      background-size: 100%;
+      background-position: center;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transition: background-size $shutterDuration linear;
+      &.grow{
+        background-size: 450%;
+      }
+    }
+
+    #X-layer{
+      color: $neutral-light;
+      position: absolute;
+      opacity: 1;
+      right: 50%;
+      top: 50%;
+      font-size: 2.5em;
+      transform: translate(50%,-50%);
+      transition: opacity $duration linear;
+
+      &.hidden{
+      opacity: 0;
+      }
+    }
 }
 
-.breaker {
-    display:none;
-    position: absolute;
-    left: 50%;
-    height: $breaker-height;
-    width: $breaker-width;
-    background: black;
-    transform: translateX(-50%);
-    z-index: 900;
-    opacity: 0;
-}
-.breaker .tip {
-    width: 70.71%;
-    transform: rotate(45deg);
-    transform-origin: 50% 50%;
-    position: absolute;
-    bottom: calc(-0.7071 * $breaker-width / 2);
-    left: calc(.7071 * $breaker-width / 4);
-    background: black;
-
-}
-.breaker .tip:after {
-    content: '';
-    display: block;
-    padding-top: 100%;
-}
 //
 //Forward to X
 //
-
-
-
-.forward .row:nth-child(2) .bun-half:first-child {
-    animation: fall-left $durationSecondRow;
-    animation-delay: $delaySecondRow;
-    animation-fill-mode: forwards;
-}
-.forward .row:nth-child(2) .bun-half:last-child {
-    animation: fall-right $durationSecondRow;
-    animation-delay: $delaySecondRow;
-    animation-fill-mode: forwards;
-}
-
-.forward .row:nth-child(3) .bun-half:first-child {
-    animation: fall-left $durationThirdRow;
-    animation-delay: $delayThirdRow;
-    animation-fill-mode: forwards;
-}
-.forward .row:nth-child(3) .bun-half:last-child {
-    animation: fall-right $durationThirdRow;
-    animation-delay: $delayThirdRow;
-    animation-fill-mode: forwards;
-}
-
-.forward .breaker {
-    animation: breaker-fall $duration;
-    animation-fill-mode: forwards;
-}
-
-.forward .row.first .bun-half:first-child {
-    animation: transform-left $duration;
-    animation-fill-mode: forwards;
-}
-.forward .row.first .bun-half:last-child {
-    animation: transform-right $duration;
-    animation-fill-mode: forwards;
-}
-
-@keyframes breaker-fall {
-    0% {
-        top: calc(-1 * $breaker-height);
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        top: $fall-height;
-        opacity: 0;
-    }
-}
-
-@keyframes transform-left {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        right: 50%;
-        transform-origin: 0 0;
-    }
-    100% {
-        transform: translateY($hamburger-height / 2) rotate(45deg);
-        right: 0;
-        border-radius: 5px;
-    }
-}
-
-@keyframes transform-right {
-     0% {
-        transform-origin: 100% 0;
-        transform: translateY(0) rotate(0deg);
-        left: 50%;
-    }
-    100% {
-        transform: translateY($hamburger-height / 2) rotate(-45deg);
-        left: 0;
-        border-radius: 5px;
-    }
-}
-
-@keyframes fall-left {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    33% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY($fall-height) rotate(75deg);
-    }
-}
-@keyframes fall-right {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    33% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY($fall-height) rotate(-75deg);
-    }
-}
-//
-//BackWards to Hamburger
-//
-.backward .row:nth-child(2) .bun-half:first-child {
-    opacity:0;
-    animation: opacity-delay $durationSecondRow;
-    animation-delay: $delaySecondRow;
-    animation-fill-mode: forwards;
-}
-.backward .row:nth-child(2) .bun-half:last-child {
-    opacity:0;
-    animation: opacity-delay $durationSecondRow;
-    animation-delay: $delaySecondRow;
-    animation-fill-mode: forwards;
-}
-
-.backward .row:nth-child(3) .bun-half:first-child {
-    opacity:0;
-    animation: rise-left $durationThirdRow;
-    animation-delay: $reverseDelayThirdRow;
-    animation-fill-mode: forwards;
-}
-.backward .row:nth-child(3) .bun-half:last-child {
-    opacity:0;
-    animation: rise-right $durationThirdRow;
-    animation-delay: $reverseDelayThirdRow;
-    animation-fill-mode: forwards;
-}
-
-
-.backward .row.first .bun-half:first-child {
-    animation: reverse-left $duration;
-    border-radius: 5px;
-    animation-fill-mode: forwards;
-}
-.backward .row.first .bun-half:last-child {
-    animation: reverse-right $duration;
-    border-radius: 5px;
-    animation-fill-mode: forwards;
-}
-
-@keyframes reverse-left{
-  0%{
-    transform: translateY($hamburger-height / 2) rotate(45deg);
-    width: $hamburger-width;
-
-  }
-
-  100%{
-      transform: translateY(0) rotate(0deg);
-      width: $hamburger-width;
-      border-radius: 5px;
-
-  }
-}
-
-@keyframes reverse-right{
-  0%{
-    transform: translate(-20px ,$hamburger-height / 2) rotate(-45deg);
-    width: $hamburger-width;
-
-  }
-
-  100%{
-    transform: translate(-20px, 12px) rotate(0deg);
-    width: $hamburger-width;
-    border-radius: 5px;
-  }
-}
-
-
-
-@keyframes opacity-delay{
-  0%{
-    opacity: 0;
-  }
-
-  99%{
-    opacity: 0
-  }
-
-  100%{
-    opacity: 1;
-  }
-}
-
-@keyframes rise-right{
-  0%{
-    transform: translateY($fall-height) ;
-    opacity: 0;
-  }
-
-  100%{
-    transform: translateY(0) ;
-    opacity: 1;
-  }
-}
-
-@keyframes rise-left{
-  0%{
-    transform: translateY($fall-height) ;
-    opacity: 0;
-  }
-
-  100%{
-    transform: translateY(0) ;
-    opacity: 1;
-  }
-}
