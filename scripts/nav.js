@@ -1,6 +1,8 @@
 'use strict';
 
 $(document).ready(function() {
+    $("#nav-buttons").addClass("ready");
+    $("#X-layer").addClass("ready");
     if ($(document).scrollTop() != 0) {
         // make small navbar when loaded and not scrolled at the very top
         $('#navbar').addClass('shrink');

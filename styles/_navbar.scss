@@ -38,10 +38,13 @@
   }
 
   #nav-buttons{
-    display: flex;
+    display: none;
     justify-content: space-between;
     height: 100%;
     margin-right: 150px;
+    &.ready{
+      display: flex;
+    }
       li{
         height: 100%;
         display: flex;
