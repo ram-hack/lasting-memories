@@ -1,16 +1,19 @@
 // main: base.scss
 
+$gallery-spacing: .05 * $content-width;
+$gallery-thumbnails-width: .4 * $content-width;
+$gallery-preview-width: $content-width - $gallery-thumbnails-width - $gallery-spacing;
+
 .gallery {
     position: relative;
     min-height: 100vh;
-    padding-left: 2rem;
 }
 .gallery-thumbnails {
     display: flex;
     position: relative;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 40%;
+    width: $gallery-thumbnails-width;
 
     .thumbnail {
         width: 30%;
@@ -33,11 +36,12 @@
     align-items: center;
     position: absolute;
     top: 0;
-    left: 45%;
     right: 0;
-    height: 100vh;
+    width: $gallery-preview-width;
+    height: #{100vh - $navbar-shrink-height};
     padding: 0;
     background: #eee;
+    // transition: top $fast-transition;
 
     img {
         display: none;
@@ -53,10 +57,11 @@
     }
 
     &.scroll-start img {
-        transform: translateY(-5vh);
     }
     &.scroll-progress {
         position: fixed;
+        right: $page-margin;
+        top: $navbar-shrink-height;
     }
     &.scroll-progress img {
         transform: translateY(0);
@@ -64,19 +69,23 @@
     &.scroll-end {
         top: auto;
         bottom: 0;
+        transition: top 0s;
     }
     &.scroll-end img {
-        transform: translateY(5vh);
     }
 }
 
-@media screen and (max-width: 1000px) {
+// --------------------------------------------------
+// Responsive Styles
+// --------------------------------------------------
+
+@media screen and (max-width: 1200px) {
     .gallery-thumbnails .thumbnail {
         width: 47.5%;
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .gallery {
         padding: 0 1rem;
     }
