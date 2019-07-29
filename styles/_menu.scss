@@ -1,0 +1,254 @@
+// main: base.scss
+
+$menuDuration: .6s;
+
+@media(max-width: 1200px){
+  #navbar{
+    flex-direction: column;
+    justify-content: space-around;
+    height: 14vh;
+    #nav-buttons{
+      margin-right: 0px;
+    }
+
+  }
+}
+
+// @media(max-width: 950px){
+//
+//   #navbar{
+//     flex-direction: column;
+//     justify-content: space-around;
+//     height: 14vh;
+//
+//   }
+// }
+
+@media(max-width: 800px){
+
+    #navbar {
+      align-items: flex-start;
+      justify-content: center;
+      height: 10vh;
+      #logo{
+        height: 100%;
+        font-size: 1.8rem;
+      }
+
+      .hamMenu{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+        height: 100vh;
+        width: 120px;
+        position: fixed;
+        right: 0px;
+        top: 120px;
+
+
+        .navButton{
+          position: absolute;
+          width: 100%;
+          background-color: $neutral-dark;
+
+          &.navForward{
+            opacity: 0;
+
+          }
+          &.navForward:first-child{
+
+            animation: drop-menu1 $menuDuration;
+            animation-delay: .65s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navForward:nth-child(2){
+
+            animation: drop-menu2 $menuDuration;
+            animation-delay:.5s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navForward:nth-child(3){
+            animation: drop-menu3 $menuDuration;
+            animation-delay: .35s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navForward:last-child{
+            animation: drop-menu4 $menuDuration;
+            animation-delay:.2s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navBackward{
+            opacity: 1;
+
+          }
+
+          &.navBackward:first-child{
+            transform:translateY(0px);
+            animation: reverse-drop-menu1 $menuDuration;
+            animation-delay: .0s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navBackward:nth-child(2){
+            transform:translateY(42px);
+            animation: reverse-drop-menu2 $menuDuration;
+            animation-delay:.15s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navBackward:nth-child(3){
+            transform:translateY(84px);
+            animation: reverse-drop-menu3 $menuDuration;
+            animation-delay: .30s;
+            animation-fill-mode: forwards;
+
+          }
+
+          &.navBackward:last-child{
+            transform:translateY(126px);
+            animation: reverse-drop-menu4 $menuDuration;
+            animation-delay:.45s;
+            animation-fill-mode: forwards;
+
+          }
+
+        }
+
+
+        &.closed{
+          display: none;
+        }
+      }
+
+      @keyframes drop-menu1{
+        0%{
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+        }
+
+
+        100%{
+          transform: translateY(0px) rotate(0deg);
+          opacity: 1;
+
+        }
+      }
+
+      @keyframes drop-menu2{
+        0%{
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+        }
+
+
+        100%{
+          transform: translateY(42px) rotate(0deg);
+          opacity: 1;
+
+        }
+      }
+
+      @keyframes drop-menu3{
+        0%{
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+        }
+
+
+        100%{
+          transform: translateY(84px) rotate(0deg);
+          opacity: 1;
+
+        }
+      }
+
+      @keyframes drop-menu4{
+        0%{
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+        }
+
+
+        100%{
+          transform: translateY(126px) rotate(0deg);
+          opacity: 1;
+
+        }
+      }
+
+
+      @keyframes reverse-drop-menu1{
+        0%{
+
+          transform: translateY(0px) rotate(0deg);
+          opacity: 1;
+        }
+
+
+        100%{
+
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes reverse-drop-menu2{
+        0%{
+
+          transform: translateY(42px) rotate(0deg);
+          opacity: 1;
+        }
+
+
+        100%{
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+
+
+        }
+      }
+
+      @keyframes reverse-drop-menu3{
+        0%{
+
+          transform: translateY(84px) rotate(0deg);
+          opacity: 1;
+        }
+
+
+        100%{
+
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes reverse-drop-menu4{
+        0%{
+          transform: translateY(126px) rotate(0deg);
+          opacity: 1;
+        }
+
+
+        100%{
+          transform: translateY(-30px) rotate(-30deg);
+          opacity: 0;
+
+        }
+      }
+
+    @import 'hamburger';
+
+    }
+}
