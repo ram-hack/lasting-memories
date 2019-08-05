@@ -2,7 +2,9 @@
 // Variables
 // --------------------------------------------------
 
-$main-color: #a5e33b;
+$main-color: #7E874B;
+$primary-accent: #263056;
+$secondary-accent: #FA7268;
 $neutral-light: white;
 $neutral-dark: #141414;
 
@@ -63,7 +65,8 @@ img {
 }
 
 h2.sectionTitle{
-  font-size: 3em;
+  font-size: 3rem;
+  margin: 2rem 0;
 }
 
 
@@ -72,7 +75,7 @@ h2.sectionTitle{
 }
 
 p {
-    font-size: 1.25em;
+    font-size: 1.25rem;
     line-height: 1.75;
 }
 

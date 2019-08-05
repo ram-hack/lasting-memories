@@ -1,12 +1,15 @@
 // main: base.scss
 
+$homepage-logo-height: 15vh;
+
 #homepage {
-    background: $neutral-dark;
+    background: $neutral-light;
 }
 
 h1#logo {
-    height: 15vh;
+    height: $homepage-logo-height;
     padding: 2vh;
+    background-color: $primary-accent;
     background-image: url(../assets/img/logo.png);
     background-size: contain;
     background-position: center left;
@@ -21,7 +24,7 @@ h1#logo {
 #homepage-header {
     display: flex;
     flex-direction: row;
-    height: 80vh;
+    height: #{100vh - $homepage-logo-height    };
     overflow: hidden;
 
     .homepage-tab {
@@ -38,23 +41,7 @@ h1#logo {
             flex: 5;
         }
 
-        &#parents-tab {
-            background: $neutral-light;
-            color: $neutral-dark;
-
-            &:hover .tab-button.default-link, .tab-button:hover {
-                background-color: $neutral-dark;
-                color: $neutral-light;
-            }
-            &:hover .tab-button.default-link.not-selected {
-                background-color: $main-color;
-                color: $neutral-dark;
-            }
-        }
-
         &#admin-tab {
-            background-color: $neutral-dark;
-            color: $main-color;
 
             .tab-icon {
                 transform: rotate(4deg);
@@ -63,10 +50,6 @@ h1#logo {
             &:hover .tab-icon {
                 transform: rotate(0deg);
                 transition: transform $med-transition $med-transition;
-            }
-
-            &:hover .tab-button.default-link, .tab-button:hover {
-                background-color: $neutral-light;
             }
         }
 
@@ -82,7 +65,7 @@ h1#logo {
             display: inline-block;
             margin: 4rem 1rem 0;
             padding: 1rem;
-            background-color: $main-color;
+            background-color: $secondary-accent;
             color: $neutral-dark;
             font-family: $display-font;
             font-size: 2rem;
@@ -94,6 +77,14 @@ h1#logo {
                 display: block;
                 transform: skewX(4deg);
             }
+        }
+        &:hover .tab-button.default-link, .tab-button:hover {
+            background-color: $neutral-dark;
+            color: $neutral-light;
+        }
+        &:hover .tab-button.default-link.not-selected {
+            background-color: $secondary-accent;
+            color: $neutral-dark;
         }
     } // end .homepage-tab
 
@@ -110,20 +101,24 @@ h1#logo {
             bottom: -25vh;
             z-index: 100;
             width: 8vw;
+            border-style: dashed;
+            border-width: 0;
             transform: translateX(-50%) rotate(4deg);
         }
 
         &.start:after {
-            border-right: 2px dashed $main-color;
+            border-color: $main-color;
+            border-right-width: 2px;
         }
 
         &.middle:after {
-            background: $main-color;
+            background: linear-gradient(90deg, $main-color 0%, $main-color 49.5%, $secondary-accent 50.5%, $secondary-accent 100%);
             transition: width $med-transition;
         }
 
         &.end:after {
-            border-left: 2px dashed $neutral-light;
+            border-color: $main-color;
+            border-left-width: 2px;
         }
     } // end .divider
     &:hover .divider.middle:after {
@@ -137,9 +132,6 @@ h1#logo {
 // --------------------------------------------------
 
 @media screen and (max-width: 900px) {
-    h1#logo {
-        border-bottom: 2px dashed $main-color;
-    }
 
     #homepage-header {
         flex-direction: column;
@@ -194,15 +186,18 @@ h1#logo {
 
             &.start:after {
                 content: none;
-                height: 8vh;
-                border-right: none;
-                border-bottom: 2px dashed $main-color;
-                background: $neutral-dark;
+                // height: 8vh;
+                // border-right-width: 0;
+                // border-bottom-width: 2px;
+            }
+
+            &.middle:after {
+                background: linear-gradient($main-color 0%, $main-color 49.5%, $secondary-accent 50.5%, $secondary-accent 100%);
             }
 
             &.end:after {
-                border-left: none;
-                border-top: 2px dashed $neutral-light;
+                border-left-width: 0;
+                border-top-width: 2px;
             }
         } // end .divider
         &:hover .divider.middle:after {

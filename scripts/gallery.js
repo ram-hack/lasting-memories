@@ -70,7 +70,7 @@ export default class Gallery {
 
         let $img = $('<img alt="">');
         $img.prop('id', 'galleryImg' + idx);
-        $img.prop('src', $currentThumbnail.data('thumbnail-src'));
+        $img.prop('src', $currentThumbnail.data('high-res-src'));
 
         this.$preview.append($img);
 
