@@ -101,11 +101,14 @@ h1#logo {
             bottom: -25vh;
             z-index: 100;
             width: 8vw;
+            border-style: dashed;
+            border-width: 0;
             transform: translateX(-50%) rotate(4deg);
         }
 
         &.start:after {
-            border-right: 2px dashed $main-color;
+            border-color: $main-color;
+            border-right-width: 2px;
         }
 
         &.middle:after {
@@ -114,7 +117,8 @@ h1#logo {
         }
 
         &.end:after {
-            border-left: 2px dashed $main-color;
+            border-color: $main-color;
+            border-left-width: 2px;
         }
     } // end .divider
     &:hover .divider.middle:after {
@@ -182,15 +186,18 @@ h1#logo {
 
             &.start:after {
                 content: none;
-                height: 8vh;
-                border-right: none;
-                border-bottom: 2px dashed $main-color;
-                background: $neutral-dark;
+                // height: 8vh;
+                // border-right-width: 0;
+                // border-bottom-width: 2px;
+            }
+
+            &.middle:after {
+                background: linear-gradient($main-color 0%, $main-color 49.5%, $secondary-accent 50.5%, $secondary-accent 100%);
             }
 
             &.end:after {
-                border-left: none;
-                border-top: 2px dashed $neutral-light;
+                border-left-width: 0;
+                border-top-width: 2px;
             }
         } // end .divider
         &:hover .divider.middle:after {
