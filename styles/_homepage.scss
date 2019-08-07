@@ -1,30 +1,35 @@
 // main: base.scss
 
-$homepage-logo-height: 15vh;
+$homepage-logo-height: 10vh;
+$homepage-logo-padding: 2vh;
 
 #homepage {
     background: $neutral-light;
 }
 
 h1#logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
     height: $homepage-logo-height;
-    padding: 2vh;
-    background-color: $primary-accent;
+    padding: $homepage-logo-padding;
+    background-color: white;
     background-image: url(../assets/img/logo.png);
     background-size: contain;
     background-position: center left;
     background-repeat: no-repeat;
     background-origin: content-box;
-    color: $neutral-light;
-    font-size: 2.5rem;
-    line-height: 11vh;
-    text-indent: 15vh;
+    color: $primary-accent;
+    font-size: 2rem;
+    line-height: #{$homepage-logo-height - 2*$homepage-logo-padding};
+    text-indent: #{$homepage-logo-height - $homepage-logo-padding};
 }
 
 #homepage-header {
     display: flex;
     flex-direction: row;
-    height: #{100vh - $homepage-logo-height    };
+    height: 100vh;
     overflow: hidden;
 
     .homepage-tab {
@@ -42,6 +47,8 @@ h1#logo {
         }
 
         &#admin-tab {
+            background-color: $primary-accent;
+            color: $neutral-light;
 
             .tab-icon {
                 transform: rotate(4deg);
@@ -65,8 +72,6 @@ h1#logo {
             display: inline-block;
             margin: 4rem 1rem 0;
             padding: 1rem;
-            background-color: $secondary-accent;
-            color: $neutral-dark;
             font-family: $display-font;
             font-size: 2rem;
             text-decoration: none;
@@ -78,13 +83,13 @@ h1#logo {
                 transform: skewX(4deg);
             }
         }
+        .tab-button, &:hover .tab-button.default-link.not-selected {
+            background-color: $main-color;
+            color: $neutral-dark;
+        }
         &:hover .tab-button.default-link, .tab-button:hover {
             background-color: $neutral-dark;
             color: $neutral-light;
-        }
-        &:hover .tab-button.default-link.not-selected {
-            background-color: $secondary-accent;
-            color: $neutral-dark;
         }
     } // end .homepage-tab
 
@@ -112,17 +117,17 @@ h1#logo {
         }
 
         &.middle:after {
-            background: linear-gradient(90deg, $main-color 0%, $main-color 49.5%, $secondary-accent 50.5%, $secondary-accent 100%);
+            background-color: $secondary-accent;
             transition: width $med-transition;
         }
 
         &.end:after {
-            border-color: $main-color;
+            border-color: $neutral-light;
             border-left-width: 2px;
         }
     } // end .divider
     &:hover .divider.middle:after {
-        width: 4vw; // Shrink middle divider when hovered over either tab
+        width: 6vw; // Shrink middle divider when hovered over either tab
     }
 
 } // end #homepage-header
@@ -189,10 +194,6 @@ h1#logo {
                 // height: 8vh;
                 // border-right-width: 0;
                 // border-bottom-width: 2px;
-            }
-
-            &.middle:after {
-                background: linear-gradient($main-color 0%, $main-color 49.5%, $secondary-accent 50.5%, $secondary-accent 100%);
             }
 
             &.end:after {
